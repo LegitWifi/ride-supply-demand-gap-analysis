@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ride Supply-Demand Gap Dashboard</title>
+<style>
+body{margin:0;background:#f7f7f7;font-family:Inter,Arial,sans-serif;color:#191919}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 40px}
+h1{font-size:24px;margin:0 0 4px} .sub{color:#666666;margin:0 0 20px;font-size:14px}
+.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
+.tile{background:#fff;border:1px solid #e6e6e6;border-radius:10px;padding:14px 16px}
+.tl{font-size:12px;color:#666666} .tv{font-size:26px;font-weight:700;margin-top:4px} .tn{font-size:12px;color:#666666;margin-top:2px}
+.card{background:#fff;border:1px solid #e6e6e6;border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.card h2{font-size:16px;margin:0 0 4px} .card p.c{font-size:13px;color:#666666;margin:0 0 6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ins li{margin:6px 0;font-size:14px;line-height:1.45}
+.tbl{border-collapse:collapse;width:100%;font-size:13px} .tbl th,.tbl td{padding:6px 8px;border-bottom:1px solid #eee;text-align:right}
+.tbl th:nth-child(-n+2),.tbl td:nth-child(-n+2){text-align:left} .tbl th{color:#666666;font-weight:600}
+details summary{cursor:pointer;font-weight:600;font-size:14px}
+@media(max-width:820px){.tiles{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+</style></head><body><div class="wrap">
+<h1>Ride Supply-Demand Gap Dashboard</h1>
+<p class="sub">6,745 city ⇄ airport ride requests, 11-15 July 2016 (Mon-Fri) · public masked dataset · hover any chart for details</p>
+<div class="tiles">
+<div class="tile"><div class="tl">Requests</div><div class="tv">6,745</div><div class="tn">5 weekdays</div></div>
+<div class="tile"><div class="tl">Fulfilment</div><div class="tv">42.0%</div><div class="tn">2,831 trips completed</div></div>
+<div class="tile"><div class="tl">Driver cancellations</div><div class="tv">1,264</div><div class="tn">18.7% of requests</div></div>
+<div class="tile"><div class="tl">No cars available</div><div class="tv">2,650</div><div class="tn">39.3% of requests</div></div>
+<div class="tile"><div class="tl">Drivers</div><div class="tv">300</div><div class="tn">~9.4 trips each in 5 days</div></div>
+</div>
+<div class="card"><h2>Key insights</h2><ul class="ins">
+<li><b>Two slots cause 67% of all failed requests:</b> airport pickups in the evening rush (only 20.7% fulfilled, 73% "no cars") and city pickups in the morning rush (28.1% fulfilled, 49% cancelled by drivers).</li>
+<li><b>It is a direction problem:</b> 3.94 city→airport requests per airport→city request in the morning, but only 0.30 in the evening. Cars pile up away from where the next demand is.</li>
+<li><b>Cancellations are concentrated:</b> the fifth of drivers who cancel most cause 31.5% of all cancellations (48% cancel rate vs 14% for the best fifth).</li>
+<li><b>Opportunity:</b> halving morning city cancellations and lifting airport evening fulfilment to 50% would add ~187 trips a day and raise fulfilment from 42.0% to ~55.9%.</li>
+</ul></div>
+<div class="card"><h2>Fulfilment % by pickup point and time slot</h2><p class="c">Completed ÷ requested. Darker = better.</p><div style="height:260px; width:100%;">                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-4.1.1.min.js" integrity="sha256-O24V1F27f8pb0glCkelh3cVHLNiHAJ5gCaVtq2aNch8=" crossorigin="anonymous"></script>                <div id="903ce9fc-f7f6-4e41-849c-f7124aff52cc" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("903ce9fc-f7f6-4e41-849c-f7124aff52cc")) {                    Plotly.newPlot(                        "903ce9fc-f7f6-4e41-849c-f7124aff52cc",                        [{"colorbar":{"thickness":10,"title":{"text":"%"}},"colorscale":[[0,"#cce3fd"],[0.25,"#9dc8f7"],[0.5,"#519ced"],[0.75,"#2370cd"],[1,"#0e3d7e"]],"hovertemplate":"%{y}, %{x}\u003cbr\u003eFulfilment: %{z:.1f}%\u003cextra\u003e\u003c\u002fextra\u003e","text":[["34%","28%","53%","76%","53%"],["41%","90%","68%","21%","50%"]],"textfont":{"size":15},"texttemplate":"%{text}","x":["Early Morning","Morning Rush","Daytime","Evening Rush","Late Night"],"xgap":2,"y":["City","Airport"],"ygap":2,"z":{"dtype":"f8","bdata":"mpmZmZkZQUCamZmZmRk8QDMzMzMzc0pAMzMzMzPzUkAAAAAAAIBKQJqZmZmZWURAzczMzMxsVkCamZmZmRlRQDMzMzMzszRAAAAAAABASUA=","shape":"2, 5"},"zmax":100,"zmin":0,"type":"heatmap"}],                        {"template":{"data":{"scatter":[{"type":"scatter"}]}},"margin":{"l":55,"r":20,"t":40,"b":45},"font":{"family":"Inter, Arial","size":12,"color":"#191919"},"hoverlabel":{"font":{"color":"#191919"},"bgcolor":"white"},"legend":{"orientation":"h","y":1.12,"x":0},"height":260,"paper_bgcolor":"white","plot_bgcolor":"white","xaxis":{"tickfont":{"color":"#666666"},"showgrid":false,"linecolor":"#ececec"},"yaxis":{"tickfont":{"color":"#666666"},"gridcolor":"#ececec","zeroline":false}},                        {"displayModeBar": false, "responsive": true}                    )                };            </script>        </div></div>
+<div class="card"><h2>What happens to requests in each slot</h2><p class="c">Morning city requests are lost to driver cancellations; evening airport requests are lost because no car is available.</p><div style="height:420px; width:100%;">                            <div id="19e1754b-4e92-42d8-bbd7-daadd74569dc" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("19e1754b-4e92-42d8-bbd7-daadd74569dc")) {                    Plotly.newPlot(                        "19e1754b-4e92-42d8-bbd7-daadd74569dc",                        [{"customdata":{"dtype":"f8","bdata":"mpmZmZkZQUCamZmZmRk8QDMzMzMzc0pAMzMzMzPzUkAAAAAAAIBKQA=="},"hovertemplate":"City, %{x}\u003cbr\u003eTrip Completed: %{y} (%{customdata}%)\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"Trip Completed","marker":{"color":"#257de0","line":{"color":"white","width":2}},"name":"Trip Completed","showlegend":true,"x":["Early Morning","Morning Rush","Daytime","Evening Rush","Late Night"],"y":{"dtype":"i2","bdata":"bwDYAYsBmwFzAA=="},"type":"bar","xaxis":"x","yaxis":"y"},{"customdata":{"dtype":"f8","bdata":"ZmZmZmZmM0AzMzMzM3NIQM3MzMzMzCtAMzMzMzMzJkCamZmZmZkhQA=="},"hovertemplate":"City, %{x}\u003cbr\u003eCancelled: %{y} (%{customdata}%)\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"Cancelled","marker":{"color":"#f47230","line":{"color":"white","width":2}},"name":"Cancelled","showlegend":true,"x":["Early Morning","Morning Rush","Daytime","Evening Rush","Late Night"],"y":{"dtype":"i2","bdata":"PwA0A2gAPAATAA=="},"type":"bar","xaxis":"x","yaxis":"y"},{"customdata":{"dtype":"f8","bdata":"AAAAAABAR0AAAAAAAAA3QM3MzMzMjEBAMzMzMzMzKkCamZmZmRlDQA=="},"hovertemplate":"City, %{x}\u003cbr\u003eNo Cars Available: %{y} (%{customdata}%)\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"No Cars Available","marker":{"color":"#00b894","line":{"color":"white","width":2}},"name":"No Cars Available","showlegend":true,"x":["Early Morning","Morning Rush","Daytime","Evening Rush","Late Night"],"y":{"dtype":"i2","bdata":"lwCBAfcARwBTAA=="},"type":"bar","xaxis":"x","yaxis":"y"},{"customdata":{"dtype":"f8","bdata":"mpmZmZlZREDNzMzMzGxWQJqZmZmZGVFAMzMzMzOzNEAAAAAAAEBJQA=="},"hovertemplate":"Airport, %{x}\u003cbr\u003eTrip Completed: %{y} (%{customdata}%)\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"Trip Completed","marker":{"color":"#257de0","line":{"color":"white","width":2}},"name":"Trip Completed","showlegend":false,"x":["Early Morning","Morning Rush","Daytime","Evening Rush","Late Night"],"y":{"dtype":"i2","bdata":"ZwB+AUcBdQGOAA=="},"type":"bar","xaxis":"x2","yaxis":"y2"},{"customdata":{"dtype":"f8","bdata":"mpmZmZmZ6T+amZmZmZkVQM3MzMzMzCpAmpmZmZmZF0CamZmZmZnxPw=="},"hovertemplate":"Airport, %{x}\u003cbr\u003eCancelled: %{y} (%{customdata}%)\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"Cancelled","marker":{"color":"#f47230","line":{"color":"white","width":2}},"name":"Cancelled","showlegend":false,"x":["Early Morning","Morning Rush","Daytime","Evening Rush","Late Night"],"y":{"dtype":"i1","bdata":"AhdAagM="},"type":"bar","xaxis":"x2","yaxis":"y2"},{"customdata":{"dtype":"f8","bdata":"AAAAAABATUCamZmZmZkTQDMzMzMzMzJAmpmZmZlZUkAzMzMzMzNIQA=="},"hovertemplate":"Airport, %{x}\u003cbr\u003eNo Cars Available: %{y} (%{customdata}%)\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"No Cars Available","marker":{"color":"#00b894","line":{"color":"white","width":2}},"name":"No Cars Available","showlegend":false,"x":["Early Morning","Morning Rush","Daytime","Evening Rush","Late Night"],"y":{"dtype":"i2","bdata":"lAAVAFcAKQWIAA=="},"type":"bar","xaxis":"x2","yaxis":"y2"}],                        {"template":{"data":{"scatter":[{"type":"scatter"}]}},"xaxis":{"anchor":"y","domain":[0.0,0.475],"tickfont":{"color":"#666666"},"showgrid":false,"linecolor":"#ececec"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"tickfont":{"color":"#666666"},"gridcolor":"#ececec","zeroline":false},"xaxis2":{"anchor":"y2","domain":[0.525,1.0],"tickfont":{"color":"#666666"},"showgrid":false,"linecolor":"#ececec"},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"matches":"y","showticklabels":false,"tickfont":{"color":"#666666"},"gridcolor":"#ececec","zeroline":false},"annotations":[{"font":{"size":16},"showarrow":false,"text":"City pickups","x":0.2375,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Airport pickups","x":0.7625,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"margin":{"l":55,"r":20,"t":80,"b":45},"font":{"family":"Inter, Arial","size":12,"color":"#191919"},"hoverlabel":{"font":{"color":"#191919"},"bgcolor":"white"},"legend":{"orientation":"h","y":1.2,"x":0},"height":420,"paper_bgcolor":"white","plot_bgcolor":"white","barmode":"stack"},                        {"displayModeBar": false, "responsive": true}                    )                };            </script>        </div></div>
+<div class="card"><h2>Demand vs supply by hour</h2><p class="c">Grey = requests, blue = completed trips. The gap peaks 05-09 for city pickups and 17-22 for airport pickups.</p><div style="height:400px; width:100%;">                            <div id="4dcd28e9-13d1-4d1e-be76-d4afd8a59484" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("4dcd28e9-13d1-4d1e-be76-d4afd8a59484")) {                    Plotly.newPlot(                        "4dcd28e9-13d1-4d1e-be76-d4afd8a59484",                        [{"customdata":{"dtype":"i2","bdata":"HQAfACUAHABZAP0A3wDgAAYB8wBpACkAJwApACMALQAtACEAFgAYABsAGQAvADcA"},"hovertemplate":"City, %{x}:00\u003cbr\u003eRequests: %{y}\u003cbr\u003eUnfulfilled: %{customdata}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"d","marker":{"color":"#c9c9c9"},"name":"Requests (demand)","showlegend":true,"x":{"dtype":"i1","bdata":"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX"},"y":{"dtype":"i2","bdata":"LgArADoALwCDAGEBNQFDAV4BVgGoAGsAYQBfAFYAXwBiAG4AaQBrAHIAagB5AGAA"},"type":"bar","xaxis":"x","yaxis":"y"},{"hovertemplate":"City, %{x}:00\u003cbr\u003eCompleted: %{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"s","marker":{"color":"#257de0"},"name":"Completed trips (supply)","showlegend":true,"width":0.5,"x":{"dtype":"i1","bdata":"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX"},"y":{"dtype":"i1","bdata":"EQwVEypkVmNYYz9COjYzMjVNU1NXUUop"},"type":"bar","xaxis":"x","yaxis":"y"},{"customdata":{"dtype":"i2","bdata":"HgAdABkAHgAkAAcACAAIAAYADwAWAA8AGAAeAA0AGAAXAOoARAEbATABGgFnACQA"},"hovertemplate":"Airport, %{x}:00\u003cbr\u003eRequests: %{y}\u003cbr\u003eUnfulfilled: %{customdata}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"d","marker":{"color":"#c9c9c9"},"name":"Requests (demand)","showlegend":false,"x":{"dtype":"i1","bdata":"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX"},"y":{"dtype":"i2","bdata":"NQAqACkALQBIAFwAWQBTAEkAWQBLAEAAVwBBADIATAA9ADQBlQFuAXoBVwG3AGIA"},"type":"bar","xaxis":"x2","yaxis":"y2"},{"hovertemplate":"Airport, %{x}:00\u003cbr\u003eCompleted: %{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"s","marker":{"color":"#257de0"},"name":"Completed trips (supply)","showlegend":false,"width":0.5,"x":{"dtype":"i1","bdata":"AAECAwQFBgcICQoLDA0ODxAREhMUFRYX"},"y":{"dtype":"i1","bdata":"Fw0QDyRVUUtDSjUxPyMlNCZKUVNKPVA+"},"type":"bar","xaxis":"x2","yaxis":"y2"}],                        {"template":{"data":{"scatter":[{"type":"scatter"}]}},"xaxis":{"anchor":"y","domain":[0.0,0.475],"title":{"text":"Hour of request"},"dtick":2,"tickfont":{"color":"#666666"},"showgrid":false,"linecolor":"#ececec"},"yaxis":{"anchor":"x","domain":[0.0,1.0],"tickfont":{"color":"#666666"},"gridcolor":"#ececec","zeroline":false},"xaxis2":{"anchor":"y2","domain":[0.525,1.0],"title":{"text":"Hour of request"},"dtick":2,"tickfont":{"color":"#666666"},"showgrid":false,"linecolor":"#ececec"},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"matches":"y","showticklabels":false,"tickfont":{"color":"#666666"},"gridcolor":"#ececec","zeroline":false},"annotations":[{"font":{"size":16},"showarrow":false,"text":"City pickups","x":0.2375,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Airport pickups","x":0.7625,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"margin":{"l":55,"r":20,"t":80,"b":45},"font":{"family":"Inter, Arial","size":12,"color":"#191919"},"hoverlabel":{"font":{"color":"#191919"},"bgcolor":"white"},"legend":{"orientation":"h","y":1.2,"x":0},"height":400,"paper_bgcolor":"white","plot_bgcolor":"white","barmode":"overlay"},                        {"displayModeBar": false, "responsive": true}                    )                };            </script>        </div></div>
+<div class="grid2">
+<div class="card"><h2>Direction of demand</h2><p class="c">City→airport requests per airport→city request. Dashed line = 1.0 (balanced).</p><div style="height:340px; width:100%;">                            <div id="8768075b-cf48-4305-b802-575008e96472" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("8768075b-cf48-4305-b802-575008e96472")) {                    Plotly.newPlot(                        "8768075b-cf48-4305-b802-575008e96472",                        [{"customdata":{"dtype":"i2","bdata":"RQH9AI0GqgHqAt4BHgIIB9kAGQE=","shape":"5, 2"},"hovertemplate":"%{x}\u003cbr\u003eCity\u2192Airport: %{customdata[0]}\u003cbr\u003eAirport\u2192City: %{customdata[1]}\u003cbr\u003eRatio: %{y:.2f}\u003cextra\u003e\u003c\u002fextra\u003e","insidetextanchor":"end","insidetextfont":{"color":"white"},"marker":{"color":"#257de0"},"text":["1.28x","3.94x","1.56x","0.30x","0.77x"],"textposition":["outside","outside","outside","outside","inside"],"x":["Early Morning","Morning Rush","Daytime","Evening Rush","Late Night"],"y":{"dtype":"f8","bdata":"exSuR+F69D+F61G4HoUPQPYoXI\u002fC9fg\u002fMzMzMzMz0z+kcD0K16PoPw=="},"type":"bar"}],                        {"template":{"data":{"scatter":[{"type":"scatter"}]}},"shapes":[{"line":{"color":"#666666","dash":"dash","width":1.5},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":1,"y1":1,"yref":"y"}],"yaxis":{"title":{"text":"City\u2192Airport per Airport\u2192City"},"range":[0,4.6],"tickfont":{"color":"#666666"},"gridcolor":"#ececec","zeroline":false},"margin":{"l":55,"r":20,"t":40,"b":45},"font":{"family":"Inter, Arial","size":12,"color":"#191919"},"hoverlabel":{"font":{"color":"#191919"},"bgcolor":"white"},"legend":{"orientation":"h","y":1.12,"x":0},"height":340,"paper_bgcolor":"white","plot_bgcolor":"white","xaxis":{"tickfont":{"color":"#666666"},"showgrid":false,"linecolor":"#ececec"}},                        {"displayModeBar": false, "responsive": true}                    )                };            </script>        </div></div>
+<div class="card"><h2>Where cancellations come from</h2><p class="c">300 drivers split into fifths by cancellation rate.</p><div style="height:340px; width:100%;">                            <div id="e1b37342-c5e4-4a62-bb95-17bf9eb46dad" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("e1b37342-c5e4-4a62-bb95-17bf9eb46dad")) {                    Plotly.newPlot(                        "e1b37342-c5e4-4a62-bb95-17bf9eb46dad",                        [{"customdata":{"dtype":"f8","bdata":"MzMzMzMzSEAAAAAAAABOQGZmZmZmZhxAmpmZmZlZQkAAAAAAAABOQAAAAAAAACJAAAAAAACAPUAAAAAAAABOQGZmZmZmZiNAMzMzMzOzN0AAAAAAAABOQM3MzMzMzCVAzczMzMzMLEAAAAAAAABOQDMzMzMzMyVA","shape":"5, 3"},"hovertemplate":"%{x} (%{customdata[1]} drivers)\u003cbr\u003eShare of all cancellations: %{y:.1f}%\u003cbr\u003eCancel rate: %{customdata[0]:.1f}%\u003cbr\u003eAvg trips: %{customdata[2]}\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":"#257de0"},"text":["31.5%","24.8%","19.2%","16.1%","8.5%"],"textposition":"outside","x":["Q1","Q2","Q3","Q4","Q5"],"y":{"dtype":"f8","bdata":"AAAAAACAP0DNzMzMzMw4QDMzMzMzMzNAmpmZmZkZMEAAAAAAAAAhQA=="},"type":"bar"}],                        {"template":{"data":{"scatter":[{"type":"scatter"}]}},"xaxis":{"title":{"text":"Drivers grouped by cancellation rate (Q1 = highest)"},"tickfont":{"color":"#666666"},"showgrid":false,"linecolor":"#ececec"},"yaxis":{"title":{"text":"% of all cancellations"},"range":[0,38],"tickfont":{"color":"#666666"},"gridcolor":"#ececec","zeroline":false},"margin":{"l":55,"r":20,"t":40,"b":45},"font":{"family":"Inter, Arial","size":12,"color":"#191919"},"hoverlabel":{"font":{"color":"#191919"},"bgcolor":"white"},"legend":{"orientation":"h","y":1.12,"x":0},"height":340,"paper_bgcolor":"white","plot_bgcolor":"white"},                        {"displayModeBar": false, "responsive": true}                    )                };            </script>        </div></div>
+</div>
+<div class="card"><h2>Fulfilment by day</h2><p class="c">The pattern holds every weekday, so it is structural.</p><div style="height:300px; width:100%;">                            <div id="18647715-3ec1-41d9-b90d-52faf5d4fb81" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("18647715-3ec1-41d9-b90d-52faf5d4fb81")) {                    Plotly.newPlot(                        "18647715-3ec1-41d9-b90d-52faf5d4fb81",                        [{"customdata":{"dtype":"i2","bdata":"VwUbBTkFSQVlBQ=="},"hovertemplate":"%{x}\u003cbr\u003eFulfilment: %{y:.1f}%\u003cbr\u003eRequests: %{customdata}\u003cextra\u003e\u003c\u002fextra\u003e","line":{"color":"#257de0","width":2},"marker":{"color":"#257de0","line":{"color":"white","width":2},"size":9},"mode":"lines+markers+text","text":["44.0%","43.0%","43.2%","39.2%","40.6%"],"textposition":"top center","x":["Mon 11 Jul","Tue 12 Jul","Wed 13 Jul","Thu 14 Jul","Fri 15 Jul"],"y":{"dtype":"f8","bdata":"AAAAAAAARkAAAAAAAIBFQJqZmZmZmUVAmpmZmZmZQ0DNzMzMzExEQA=="},"type":"scatter"}],                        {"template":{"data":{"scatter":[{"type":"scatter"}]}},"yaxis":{"title":{"text":"Fulfilment %"},"range":[0,60],"tickfont":{"color":"#666666"},"gridcolor":"#ececec","zeroline":false},"margin":{"l":55,"r":20,"t":40,"b":45},"font":{"family":"Inter, Arial","size":12,"color":"#191919"},"hoverlabel":{"font":{"color":"#191919"},"bgcolor":"white"},"legend":{"orientation":"h","y":1.12,"x":0},"height":300,"paper_bgcolor":"white","plot_bgcolor":"white","xaxis":{"tickfont":{"color":"#666666"},"showgrid":false,"linecolor":"#ececec"}},                        {"displayModeBar": false, "responsive": true}                    )                };            </script>        </div></div>
+<div class="card"><details><summary>Table view: fulfilment by pickup point and slot</summary><table class="dataframe tbl">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Pickup</th>
+      <th>Time slot</th>
+      <th>Requests</th>
+      <th>Completed</th>
+      <th>Cancelled</th>
+      <th>No cars</th>
+      <th>Fulfilment %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Airport</td>
+      <td>Early Morning (00-04)</td>
+      <td>253</td>
+      <td>103</td>
+      <td>2</td>
+      <td>148</td>
+      <td>40.7</td>
+    </tr>
+    <tr>
+      <td>Airport</td>
+      <td>Morning Rush (05-09)</td>
+      <td>426</td>
+      <td>382</td>
+      <td>23</td>
+      <td>21</td>
+      <td>89.7</td>
+    </tr>
+    <tr>
+      <td>Airport</td>
+      <td>Daytime (10-16)</td>
+      <td>478</td>
+      <td>327</td>
+      <td>64</td>
+      <td>87</td>
+      <td>68.4</td>
+    </tr>
+    <tr>
+      <td>Airport</td>
+      <td>Evening Rush (17-21)</td>
+      <td>1800</td>
+      <td>373</td>
+      <td>106</td>
+      <td>1321</td>
+      <td>20.7</td>
+    </tr>
+    <tr>
+      <td>Airport</td>
+      <td>Late Night (22-23)</td>
+      <td>281</td>
+      <td>142</td>
+      <td>3</td>
+      <td>136</td>
+      <td>50.5</td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>Early Morning (00-04)</td>
+      <td>325</td>
+      <td>111</td>
+      <td>63</td>
+      <td>151</td>
+      <td>34.2</td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>Morning Rush (05-09)</td>
+      <td>1677</td>
+      <td>472</td>
+      <td>820</td>
+      <td>385</td>
+      <td>28.1</td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>Daytime (10-16)</td>
+      <td>746</td>
+      <td>395</td>
+      <td>104</td>
+      <td>247</td>
+      <td>52.9</td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>Evening Rush (17-21)</td>
+      <td>542</td>
+      <td>411</td>
+      <td>60</td>
+      <td>71</td>
+      <td>75.8</td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>Late Night (22-23)</td>
+      <td>217</td>
+      <td>115</td>
+      <td>19</td>
+      <td>83</td>
+      <td>53.0</td>
+    </tr>
+  </tbody>
+</table></details></div>
+<p class="sub">Built with Python (pandas), SQLite and Plotly · analysis notebook and SQL in this repository.</p>
+</div></body></html>
